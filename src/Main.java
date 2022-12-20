@@ -1,14 +1,22 @@
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.BufferedReader;
+import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         List<Integer> elfos = leerArchivo();
-        int res = valorMaximo(elfos);
-        System.out.println(res);
+        int max = valorMaximo(elfos);
+        System.out.println("El valor máximo es: " + max);
+        ordenarLista(elfos);
+        System.out.println("-----------------------------");
+        System.out.println("Valor Máximo: " + elfos.get(0));
+        System.out.println("Valor nº 2: " + elfos.get(1));
+        System.out.println("Valor nº 3: " + elfos.get(2));
+        int suma = elfos.get(0) + elfos.get(1) + elfos.get(2);
+        System.out.println("La suma de los tres mayores valores es: " + suma);
     }
 
     private static List<Integer> leerArchivo() throws IOException {
@@ -30,6 +38,12 @@ public class Main {
             inputLine = br.readLine();
         }
         return elfos;
+    }
+
+    private static List<Integer> ordenarLista(List<Integer> lista) {
+        Collections.sort(lista);
+        Collections.reverse(lista);
+        return lista;
     }
 
     private static int valorMaximo(List<Integer> elfos) {
